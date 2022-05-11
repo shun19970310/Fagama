@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  validates :name, :email, :introduction, presence: true
+
   attachment :image
 
 end
