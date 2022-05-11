@@ -7,8 +7,14 @@
       <a class="navbar-brand" href="/"><span>Fagama</span></a>
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
+               <li class = "nav-item mr-3">
+                <%= link_to posts_path, class:"btn btn-sm btn-outline-secondary" do %>
+                  投稿一覧
+                <% end %>
+               </li>
                <li class = "nav-item mr-3">
                 <%= link_to destroy_admin_session_path, method: :delete, class:"btn btn-sm btn-outline-secondary" do %>
                   ログアウト
@@ -21,6 +27,11 @@
                 <% end %>
                </li>
                <li class = "nav-item mr-3">
+                <%= link_to posts_path, class:"btn btn-sm btn-outline-secondary" do %>
+                  投稿一覧
+                <% end %>
+               </li>
+               <li class = "nav-item mr-3">
                 <%= link_to destroy_customer_session_path, method: :delete , class:"btn btn-sm btn-outline-secondary" do %>
                   ログアウト
                 <% end %>
@@ -29,6 +40,11 @@
                <li class = "nav-item mr-3">
                 <%= link_to about_path, class:"btn btn-sm btn-outline-secondary" do %>
                   About
+                <% end %>
+               </li>
+               <li class = "nav-item mr-3">
+                <%= link_to posts_path, class:"btn btn-sm btn-outline-secondary" do %>
+                  投稿一覧
                 <% end %>
                </li>
                <li class = "nav-item mr-3">
