@@ -1,19 +1,23 @@
 class Public::PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
-
   def create
-    @post = Post.new(post_params,customer_id: @current_customer.id)
-    if @post.save
+    @post = Post.new(post_params)
+    if @post.save!
       redirect_to posts_path, notice: "投稿に成功しました"
     else
-      render :new
+      @posts = Post.all
+       render :index
     end
   end
 
   def index
-    @posts = Post.all
+    @post = Post.new
+    @newpost = Post.new
+    @posts = Post.all.includes(:customer).order(created_at: :desc).page(params[:page])
+
   end
 
   def show
@@ -39,6 +43,6 @@ class Public::PostsController < ApplicationController
   end
   private
   def post_params
-    params.require(:post).permit(:title, :body, :category)
+    params.require(:post).permit(:title, :body, :category, :customer_id)
   end
 end

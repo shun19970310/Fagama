@@ -7,9 +7,12 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :group_users
+  has_many :groups, through: :group_users
 
-  validates :name, :email, :introduction, presence: true
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :email, presence: true
 
-  attachment :image
+  attachment :image, destroy: false
 
 end
