@@ -35,10 +35,12 @@
                 <div class ="time"><%= l post.created_at %></div>
               </td>
               <td>
-                <%= "コメント件数:#{post.comments.count} " %>
+                <i class="fa fa-comment"></i>
+                <span><%= "#{post.comments.count} " %></span>
               </td>
               <td>
-                <%= "いいね:#{post.likes.count}" %>
+                <i class="fa fa-thumbs-up"></i>
+                <span><%= "#{post.likes.count}" %></span>
               </td>
             </tr>
           <% end %>
