@@ -24,7 +24,9 @@ Rails.application.routes.draw do
      resource :likes, only: [:create,:destroy]
     end
 
-    resources :groups, only: [:create, :new, :edit, :update]
+    resources :groups do
+      get "join" => "groups#join"
+    end
   end
 
 
