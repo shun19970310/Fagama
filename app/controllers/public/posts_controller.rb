@@ -21,7 +21,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @customer = Customer.find_by(id: @post.customer_id)
+    @comment = Comment.new
+    @comments = @post.comments.page(params[:page]).per(7).reverse_order
   end
 
   def edit
