@@ -9,7 +9,6 @@
 
         <thead>
           <tr>
-            <th></th>
             <th>タイトル</th>
             <th>内容</th>
             <th colspan="3"></th>
@@ -17,19 +16,14 @@
         </thead>
 
         <tbody>
-          <% @posts.each do |posts|%>
+          <% @posts.each do |post| %>
             <tr>
               <td>
-                <%= link_to customer_path(posts.customer.id) do %>
-                  <%= attachment_image_tag posts.customer.image(100,100), class:"attachment customer image fallback"; %>
+                <%= link_to post_path(post.id) do %>
+                  <%= post.title %>
                 <% end %>
               </td>
-              <td>
-                <%= link_to post_path(posts.id) do %>
-                  <%= posts.title %>
-                <% end %>
-              </td>
-              <td><%= posts.body %></td>
+              <td><%= post.body %></td>
             </tr>
           <% end %>
         </tbody>

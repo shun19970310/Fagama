@@ -5,7 +5,8 @@ class Public::PostsController < ApplicationController
   end
   def create
     @post = Post.new(post_params)
-    if @post.save!
+    @post.customer_id = current_customer.id
+    if @post.save
       redirect_to posts_path, notice: "投稿に成功しました"
     else
       @posts = Post.all
@@ -14,8 +15,6 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
-    @newpost = Post.new
     @posts = Post.all.includes(:customer).order(created_at: :desc).page(params[:page])
 
   end
