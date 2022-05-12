@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
-  has_many :group_users
-  has_many :customers, through: :group_users
+  has_many :group_users, dependent: :destroy
+  has_many :customers, through: :group_users, dependent: :destroy
 
   validates :name, presence: true
   validates :introduction, presence: true
