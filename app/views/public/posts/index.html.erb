@@ -37,6 +37,9 @@
               <td>
                 <%= "コメント件数:#{post.comments.count} " %>
               </td>
+              <td>
+                <%= "いいね:#{post.likes.count}" %>
+              </td>
             </tr>
           <% end %>
         </tbody>
