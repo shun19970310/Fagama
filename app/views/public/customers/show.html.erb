@@ -1,6 +1,6 @@
 <section class="hero is-success">
   <div class="hero-body">
-    <div class="container">
+    <div class="container has-text-centered">
       <h1 class="title">
         マイページ
       </h1>
@@ -29,7 +29,7 @@
                   <%= @customer.email %>
                  </td>
                  <td>
-                  <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success ml-3" %>
+                  <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success ml-3" %> <%= link_to "お気に入り一覧", likes_customer_path(@customer), class: "btn btn-danger ml-3" %>
                  </td>
                 <% end %>
               </tr>

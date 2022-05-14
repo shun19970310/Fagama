@@ -1,0 +1,19 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        お気に入り一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+　　　　<%= render partial: "public/posts/post", collection: @like_posts %>
+　　　</div>
+　　</div>
+　</div>
+</section>
