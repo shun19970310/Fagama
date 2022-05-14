@@ -1,0 +1,4 @@
+<%= link_to post.customer.name, customer_path(post.customer.id) %>
+<i class="fa fa-heart unlike-btn"></i>
+<%= post.likes.length %>
+<%= link_to post.title, post_path(post.id) %>

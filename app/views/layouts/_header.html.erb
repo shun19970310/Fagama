@@ -10,7 +10,7 @@
         <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
             <li class = "nav-item mr-3">
-              <%= link_to posts_path, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to admin_customers_path, class:"btn btn-sm btn-outline-secondary" do %>
                 ユーザー一覧
               <% end %>
             </li>

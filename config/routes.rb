@@ -11,12 +11,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => 'homes#about', as: 'about'
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update] do
+      member do
+       get :likes
+      end
+    end
     get 'customers/unsubscribe'
     patch 'customers/withdraw'
     resources :posts do
