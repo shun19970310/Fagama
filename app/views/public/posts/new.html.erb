@@ -24,10 +24,9 @@
           </div>
 
           <div class="field">
-            <%= f.label :category, "カテゴリー", class: "label" %>
-            <%= f.text_field :category, class: "input" %>
+            <%= f.label "タグ (,で区切ると複数タグ登録できます)" %>
+            <%= f.text_field :name, value: @tag_list, class:"form-control"%>
           </div>
-
           <%= f.submit '投稿', class: "button is-success" %>
         <% end %>
       </div>
