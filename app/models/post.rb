@@ -5,6 +5,14 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  def self.search(search)
+    if search != ""
+      Post.where('title LIKE(?)', "%#{search}%")
+    else
+      Post.includes(:customer)
+    end
+  end
+
   def liked_by?(customer)
     likes.where(customer_id: customer.id).exists?
   end

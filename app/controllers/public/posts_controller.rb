@@ -63,7 +63,11 @@ class Public::PostsController < ApplicationController
     end
   end
 
-   def search_tag
+  def search
+    @posts = Post.search(params[:keyword])
+  end
+
+  def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.page(params[:page]).per(10)
