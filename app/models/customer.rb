@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
   has_many :groups, through: :group_users, dependent: :destroy
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+
   validates :email, presence: true
 
   attachment :image, destroy: false

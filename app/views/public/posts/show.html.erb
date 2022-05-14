@@ -15,12 +15,18 @@
         <h3>ユーザー名:<%= @post.customer.name %></h3><br>
         <h3>タイトル:<%= @post.title %></h3><br>
         <h3>投稿内容</h3>
-        <p id="text"><%= @post.body %></p>
+        <% @post_tags.each do |tag| %>
+         <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+         <%= "(#{tag.posts.count})" %>
+        <% end %>
+        <p id="text"><%= simple_format @post.body %></p>
         <div id="favorite_btn_<%= @post.id %>">
          <%= render 'public/likes/like', post: @post %>
         </div>
-        <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-        <%= link_to '削除する', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger" %><br>
+        <% if @post.customer.id == current_customer.id %>
+         <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
+         <%= link_to '削除する', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger" %><br>
+        <% end %>
         <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
       </div>
 
@@ -41,9 +47,9 @@
               <div class="comment-delete">
                <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn-sm btn-danger" %>
               </div>
+             <% end %>
            </div>
           </div>
-        <% end %>
         <% end %>
         <%= paginate @comments %>
       </div>

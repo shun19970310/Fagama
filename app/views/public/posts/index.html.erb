@@ -5,6 +5,13 @@
       <h2 class="mt-3">投稿一覧
        <span><%= link_to "新規投稿", new_post_path, class: 'btn btn-sm mb-1 btn-primary' %></span>
       </h2>
+
+      <h3>タグリスト</h3>
+      <% @tag_list.each do |list|%>
+        <%=link_to list.name, search_tag_path(tag_id: list.id) %>
+        <%= "(#{list.posts.count})" %>
+      <% end %>
+
       <table class="table table-hover table-inverse">
 
         <thead>
@@ -30,7 +37,7 @@
                   <%= post.title %>
                 <% end %>
               </td>
-              <td><%= post.body %></td>
+              <td><%= simple_format post.body %></td>
               <td>
                 <div class ="time"><%= l post.created_at %></div>
               </td>

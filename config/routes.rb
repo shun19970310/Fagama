@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     end
 
     post '/guests/guest_sign_in', to: 'guests#new_guest'
+
+    get "search_tag"=>"posts#search_tag"
+
   end
 
 
