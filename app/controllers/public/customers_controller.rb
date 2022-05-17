@@ -4,7 +4,6 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page])
-    @like_posts = @customer.like_posts.page(params[:page])
   end
 
   def edit
@@ -18,9 +17,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-    if current_customer.name == "guestuser"
-      redirect_to customer_path(current_customer)
-    end
+    @customer = current_customer
   end
 
   def withdraw

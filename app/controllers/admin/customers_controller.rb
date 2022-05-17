@@ -13,7 +13,7 @@ class Admin::CustomersController < ApplicationController
 
   def update
     customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
+    if customer.update(customer_params)
       redirect_to admin_customer_path(customer), notice: "会員情報を更新しました"
     else
       render :edit
@@ -23,6 +23,6 @@ class Admin::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :is_deleted)
+    params.require(:customer).permit(:name, :email, :introduction, :is_deleted)
   end
 end
