@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @posts = @customer.posts.page(params[:page])
+    @like_posts = @customer.like_posts.page(params[:page])
   end
 
   def edit
@@ -13,6 +15,18 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     redirect_to customer_path(@customer)
+  end
+
+  def unsubscribe
+    if current_customer.name == "guestuser"
+      redirect_to customer_path(current_customer)
+    end
+  end
+
+  def withdraw
+    current_customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path, notice: "退会が完了しました"
   end
 
   def likes
