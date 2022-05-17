@@ -8,24 +8,24 @@
 
 
  <div class="row">
-    <div class="offset-4 col-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages" %>
-        <div class="form-group mt-4">
+   <div class="offset-4 col-4">
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+       <%= render "public/shared/error_messages" %>
+       <div class="form-group mt-4">
          <%= f.label :メールアドレス, class: "label" %>
-         <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "form-control offset-1 col-10" %>
-        </div>
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "form-control offset-1 col-10" %>
+       </div>
 
-        <div class="form-group mt-3">
+       <div class="form-group mt-3">
          <%= f.label :パスワード, class: "label" %>
-         <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "form-control offset-1 col-10" %>
-        </div>
+         <%= f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード", class: "form-control offset-1 col-10" %>
+       </div>
 
-        <div class="form-group mt-5">
+       <div class="form-group mt-5">
          <%= f.submit "ログイン", class:"btn btn-primary " %>
-        </div>
-      <% end %>
-      <%= render "admin/shared/links" %>
-    </div>
+       </div>
+     <% end %>
+     <%= render "admin/shared/links" %>
+   </div>
  </div>
 </div>
