@@ -21,10 +21,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update] do
       member do
        get :likes
+       get :unsubscribe
+       patch :withdraw
       end
     end
-    get 'customers/unsubscribe'
-    patch 'customers/withdraw'
     resources :posts do
      resources :comments, only:[:create, :destroy]
      resource :likes, only: [:create,:destroy]

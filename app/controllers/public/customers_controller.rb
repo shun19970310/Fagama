@@ -1,27 +1,23 @@
 class Public::CustomersController < ApplicationController
-  before_action :set_customer, only: [:likes]
+  before_action :set_customer, only: [:show, :edit, :update, :unsubscribe, :likes, :withdraw]
 
   def show
-    @customer = Customer.find(params[:id])
     @posts = @customer.posts.page(params[:page])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     redirect_to customer_path(@customer)
   end
 
   def unsubscribe
-    @customer = current_customer
   end
 
   def withdraw
-    current_customer.update(is_deleted: true)
+    @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path, notice: "退会が完了しました"
   end

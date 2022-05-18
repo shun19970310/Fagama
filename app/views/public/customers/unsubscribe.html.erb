@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h2 class="text-center">本当に退会しますか？</h2>
+        <p class="text-center">退会すると、会員登録情報や投稿が閲覧できなくなります。</p>
+        <p class="text-center">退会する場合は、「退会する」をクリックしてください。</p>
+        <div class="d-flex align-items-center justify-content-center" style="height:200px;" >
+          <%= link_to "退会しない", customer_path(@customer), class:"btn btn-primary" %>
+          <%= link_to "退会する", withdraw_customer_path(@customer), method: :patch,  "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？",　class:"btn btn-danger ml-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
