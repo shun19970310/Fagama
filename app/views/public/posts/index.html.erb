@@ -1,19 +1,25 @@
-<div class="container px-5 px-sm-0">
+<section class="hero is-danger">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        投稿一覧
+      </h1>
+    </div>
+  </div>
+</section>
 
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-8 offset-md-1">
-      <h2 class="mt-3">投稿一覧
-       <span><%= link_to "新規投稿", new_post_path, class: 'btn btn-sm mb-1 btn-primary' %></span>
-      </h2>
-
-      <div>
+      <div class = "mt-2">
         <% @tag_list.each do |list|%>
          <%=link_to list.name, search_tag_path(tag_id: list.id) %>
          <%= "(#{list.posts.count})" %>
         <% end %>
+        <span><%= link_to "新規投稿", new_post_path, class: "btn btn-success ml-3" %></span>
       </div>
 
-      <div>
+      <div class = "mt-2">
         <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
          <%= f.text_field :keyword, placeholder: "投稿を検索する" %>
          <%= f.submit "検索" %>
