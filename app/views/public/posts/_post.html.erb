@@ -1,4 +1,14 @@
-<%= link_to post.customer.name, customer_path(post.customer.id) %>
-<i class="fa fa-heart unlike-btn"></i>
-<%= post.likes.length %>
-<%= link_to post.title, post_path(post.id) %>
+<table class = "table" >
+  <thead>
+    <tr>
+      <th>投稿主</th>
+      <th>タイトル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= link_to post.customer.name, customer_path(post.customer.id) %></td>
+      <td><%= link_to post.title, post_path(post.id) %></td>
+    </tr>
+  </tbody>
+</table>
