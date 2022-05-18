@@ -1,6 +1,6 @@
 <section class="hero is-info">
   <div class="hero-body">
-    <div class="container">
+    <div class="container has-text-centered">
       <h1 class="title">
         新規登録画面
       </h1>
@@ -14,7 +14,6 @@
       <div class="column is-5">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
 
         <div class="field">
           <%= f.label :name, class: "label" %>
@@ -60,12 +59,13 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "新規登録", class: "button is-success" %>
+          <%= f.submit "新規登録", class:"btn btn-secondary" %>
         </div>
         <% end %>
 
-        <div class="field">
-         <%= render "devise/shared/links" %>
+        <div class="box-newusr mt-3">
+         <p><span>----------</span> 既に登録済みの方はこちらから <span>----------</span></p>
+          <%= render "devise/shared/links" %>
         </div>
       </div>
     </div>

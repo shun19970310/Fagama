@@ -12,23 +12,30 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-     <div class="notification is-info">
-      <p class="notice"><%= notice %></p>
-     </div>
-    <% end %>
-
-    <% if flash[:alert] %>
-     <div class="notification is-danger">
-      <p class="alert"><%= alert %></p>
-     </div>
-    <% end %>
 
     <header>
-     <%= render "layouts/header" %>
+     <% if admin_signed_in? %>
+       <%= render "layouts/admin_header" %>
+     <% elsif customer_signed_in? %>
+       <%= render "layouts/public_header" %>
+     <% else %>
+       <%= render "layouts/header" %>
+     <% end %>
     </header>
 
     <main>
+     <% if flash[:notice] %>
+      <div class="notification is-info">
+       <p class="notice"><%= notice %></p>
+      </div>
+     <% end %>
+
+     <% if flash[:alert] %>
+      <div class="notification is-danger">
+       <p class="alert"><%= alert %></p>
+      </div>
+     <% end %>
+
      <%= yield %>
     </main>
 
