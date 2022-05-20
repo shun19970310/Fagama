@@ -45,7 +45,7 @@
              <%= comment.comment %>
              <% if comment.customer == current_customer %>
               <div class="comment-delete">
-               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn-sm btn-danger" %>
+               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,  "data-confirm" => "削除しますか？",class: "btn-sm btn-danger" %>
               </div>
              <% end %>
            </div>
