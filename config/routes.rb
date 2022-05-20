@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get 'home/about' => 'homes#about', as: 'about'
-    resources :customers, only: [:show, :edit, :update] do
+    resources :customers do
+      resource :relationships, only: [:create, :destroy]
+      get :followings, on: :member
+      get :followers, on: :member
+
       member do
        get :likes
        get :unsubscribe
@@ -42,7 +46,5 @@ Rails.application.routes.draw do
     get "search_tag"=>"posts#search_tag"
 
   end
-
-
 
 end

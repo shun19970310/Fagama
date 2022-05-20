@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :unsubscribe, :likes, :withdraw]
+  before_action :authenticate_customer!
 
   def show
     @posts = @customer.posts.page(params[:page])
@@ -25,6 +26,16 @@ class Public::CustomersController < ApplicationController
   def likes
     likes = Like.where(customer_id: @customer.id).pluck(:post_id)
     @like_posts = Post.find(likes)
+  end
+
+  def followings
+    customer = Customer.find(params[:id])
+    @customers = customer.followings
+  end
+
+  def followers
+    customer = Customer.find(params[:id])
+    @customers = customer.followers
   end
 
   private
