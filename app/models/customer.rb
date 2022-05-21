@@ -24,6 +24,10 @@ class Customer < ApplicationRecord
     reverse_of_relationships.find_by(following_id: customer.id).present?
   end
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
