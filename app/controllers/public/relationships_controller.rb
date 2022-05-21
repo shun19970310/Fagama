@@ -8,7 +8,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def destroy
-    following = current_customer.relationships.build(follower_id: params[:customer_id])
+    following = current_customer.relationships.find_by(follower_id: params[:customer_id])
     following.destroy
     redirect_to request.referrer
   end
