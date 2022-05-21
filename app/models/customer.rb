@@ -28,6 +28,13 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def self.guest
+    find_or_create_by!(name: "guestuser" ,email: "guest@example") do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestuser"
+    end
+  end
+
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 

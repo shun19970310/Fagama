@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :unsubscribe, :likes, :withdraw]
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:guest_sign_in]
 
   def show
     @posts = @customer.posts.page(params[:page])
@@ -15,12 +15,21 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    if current_customer.name == "guestuser"
+      redirect_to customer_path(current_customer)
+    end
   end
 
   def withdraw
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path, notice: "退会が完了しました"
+  end
+
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to root_path, notice: "ゲストログインしました"
   end
 
   def likes
