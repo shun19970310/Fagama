@@ -17,18 +17,17 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    get 'home/about' => 'homes#about', as: 'about'
     resources :customers do
       resource :relationships, only: [:create, :destroy]
       get :followings, on: :member
       get :followers, on: :member
-
       member do
        get :likes
        get :unsubscribe
        patch :withdraw
       end
     end
+
     resources :posts do
      resources :comments, only:[:create, :destroy]
      resource :likes, only: [:create,:destroy]
