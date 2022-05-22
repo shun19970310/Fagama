@@ -21,3 +21,10 @@
 .image {
  border-radius: 50%;
 }
+
+.main-image {
+	height: 940px;
+	background-image: image-url("stayhome4.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+}
