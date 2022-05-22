@@ -53,12 +53,12 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path, notice: "削除に成功しました"
+    redirect_to request.referrer, notice: "削除に成功しました"
   end
 
   def ensure_correct_user
-    @post = Post.find_by(id:params[:id])
-    if @post.customer_id != @current_customer.id
+    @post = Post.find_by(id: params[:id])
+    if @post.customer_id != current_customer.id
       flash[:notice] = "権限がありません"
       redirect_to posts_path
     end
