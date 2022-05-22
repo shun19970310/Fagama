@@ -14,12 +14,12 @@
       <div class="column is-8">
         <div class="columns is-centered">
           <div class="column is-2">
-            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+            <figure class="image is-80x80"  style="margin-left: auto; margin-right: auto;">
               <%= attachment_image_tag @customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
             </figure>
           </div>
           <div class="column is-10">
-            <table class="table is-fullwidth">
+            <table class="table is-fullwidth ">
               <tr>
                 <td class="is-size-5">
                   <strong><%= @customer.name %></strong>
@@ -32,7 +32,8 @@
                    <strong><%= link_to @customer.followings.count, followings_customer_path(@customer) %> フォロー <%= link_to @customer.followers.count, followers_customer_path(@customer) %> フォロワー</strong>
                  </td>
                  <td>
-                  <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success ml-3" %> <%= link_to "お気に入り一覧", likes_customer_path(@customer), class: "btn btn-danger ml-3" %>
+                  <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success ml-3" %>
+                  <%= link_to "いいね一覧", likes_customer_path(@customer), class: "btn btn-danger ml-3" %>
                  </td>
                 <% else %>
                  <td>
@@ -59,6 +60,46 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <% @customer.posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mt-2">
+            <div class="card-body text-center">
+              <h4 class="card-title"><strong><%=post.title %></strong></h4>
+            　<p class="card-text"><%=post.body %></p>
+              <%= link_to post_path(post), class: "panel-block" do %>
+                <span class="panel-icon">
+                  <i class="fas fa-book" aria-hidden="true"></i>
+                </span>
+                この投稿を見る
+              <% end %>
+              <% if @customer.id == current_customer.id %>
+                <%= link_to edit_post_path(post), class: "panel-block" do %>
+                  <span class="panel-icon">
+                    <i class="fas fa-edit"></i>
+                  </span>
+                  この投稿を編集する
+                <% end %>
+                <%= link_to post_path(post), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                  <span class="panel-icon">
+                    <i class="fas fa-trash"></i>
+                  </span>
+                  この投稿を削除する
+                <% end %>
+              <% end %>
+              <div class="content">
+                投稿：<time><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></time>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>
