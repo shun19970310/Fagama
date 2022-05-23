@@ -16,7 +16,7 @@
           <div class="card-body text-center">
             <h5 class="card-title"><strong><%= @post.title %></strong></h5>
             <h6 class="card-body"><strong><%= simple_format @post.body %></strong></h6>
-            <% @post_tags.each do |tag| %>
+            <% [].each do |tag| %>
               <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
               <%= "(#{tag.posts.count})" %>
             <% end %>

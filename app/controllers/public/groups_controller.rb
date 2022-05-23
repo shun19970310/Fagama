@@ -15,7 +15,7 @@ class Public::GroupsController < ApplicationController
   def join
     @group = Group.find(params[:group_id])
     @group.customers << current_customer
-    redirect_to  groups_path
+    redirect_to  groups_path, notice: '参加に成功しました'
   end
 
   def new
@@ -27,9 +27,9 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_customer.id
     @group.customers << current_customer
     if @group.save
-      redirect_to groups_path, notice: 'グループを作成しました。'
+      redirect_to groups_path, notice: 'グループを作成しました'
     else
-      render 'new', notice: 'グループの作成に失敗しました'
+      redirect_to new_group_path, alert: 'グループ名及び紹介文を入力して下さい'
     end
   end
 
@@ -38,9 +38,9 @@ class Public::GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to groups_path, notice: 'グループを更新しました。'
+      redirect_to groups_path, notice: 'グループを更新しました'
     else
-      render "edit", alert: 'グループの更新に失敗しました'
+      redirect_to edit_group_path(@group), alert: 'グループの更新に失敗しました'
     end
   end
 
