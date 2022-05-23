@@ -7,6 +7,9 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="ml-auto">
+          <span class='nav-link text-light'>ようこそ！<%= current_customer.name %>さん！</span>
+        </div>
         <ul class="navbar-nav ml-auto">
             <li class = "nav-item mr-3">
               <%= link_to customer_path(current_customer), class:"btn btn-sm btn-outline-secondary" do %>

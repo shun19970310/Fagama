@@ -35,7 +35,6 @@ class Customer < ApplicationRecord
     end
   end
 
-
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   validates :email, presence: true
