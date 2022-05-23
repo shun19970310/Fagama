@@ -9,9 +9,11 @@
       <div class="columns is-centered">
         <div class="column is-5">
           <br>
-          <%= link_to "ログイン", new_customer_session_path, class: "button is-warning is-fullwidth" %>
+          <%= link_to "会員専用ログイン", new_customer_session_path, class: "button is-warning is-fullwidth" %>
           <br>
-          <%= link_to "新規登録", new_customer_registration_path, class: "button is-warning is-fullwidth" %>
+          <%= link_to "管理者専用ログイン", new_admin_session_path, class: "button is-warning is-fullwidth" %>
+          <br>
+          <%= link_to "新規会員登録", new_customer_registration_path, class: "button is-warning is-fullwidth" %>
         </div>
       </div>
     </div>

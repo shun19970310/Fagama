@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        投稿詳細
+        <%= @post.title %>
       </h1>
     </div>
   </div>
@@ -12,9 +12,9 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <h3>投稿主:<%= @post.customer.name %></h3><br>
-        <h3>タイトル:<%= @post.title %></h3><br>
-        <h3>投稿内容</h3>
+        <h4>投稿主:<%= @post.customer.name %></h4><br>
+        <h4>タイトル:<%= @post.title %></h4><br>
+        <h4>投稿内容</h4>
         <% @post_tags.each do |tag| %>
          <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
          <%= "(#{tag.posts.count})" %>
@@ -24,19 +24,19 @@
          <%= render 'public/likes/like', post: @post %>
         </div>
         <% if @post.customer.id == current_customer.id %>
-         <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-         <%= link_to '削除する', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger" %><br>
+         <%= link_to '編集', edit_post_path(@post.id), class: "btn btn-success mr-3 mt-2" %>
+         <%= link_to '削除', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mt-2" %>
         <% end %>
-        <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
+        <span><%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark ml-3 mt-2" %></span>
       </div>
 
-      <div class="comments ml-5 mt-5">
+      <div class="comments ml-5 mt-3">
         <%= form_with(model:[@post, @comment], local: true) do |f| %>
-        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントする" %>
-        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントを入力して下さい" %>
+        <%= f.submit "送信する", class: "btn btn-success mt-2" %>
         <% end %>
 
-        <p>コメント：<%= @comments.count %>件</p>
+        <p class = "mt-2">コメント：<%= @comments.count %>件</p>
         <% @comments.each do |comment| %>
 	        <div class="comments-index mb-2">
             <%= comment.customer.name %>
@@ -45,7 +45,7 @@
              <%= comment.comment %>
              <% if comment.customer == current_customer %>
               <div class="comment-delete">
-               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,  "data-confirm" => "削除しますか？",class: "btn-sm btn-danger" %>
+               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,  "data-confirm" => "削除しますか？",class: "btn-sm btn-danger ml-3" %>
               </div>
              <% end %>
            </div>

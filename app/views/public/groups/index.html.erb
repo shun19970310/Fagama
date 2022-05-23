@@ -1,4 +1,4 @@
-<section class="hero is-info">
+<section class="hero is-warning">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
@@ -15,8 +15,10 @@
           <th>グループ名</th>
           <th>紹介文</th>
           <th>メンバー数</th>
-          <th><%= link_to 'グループ作成', new_group_path, class: "btn btn-sm  btn-success" %></th>
-          <th colspan="3"></th>
+          <th>
+            <%= link_to new_group_path, style:"font-size:40px; color:orange;" do %>
+              <i class="fas fa-plus-circle"></i>
+            <% end %></th>
         </tr>
       </thead>
       <tbody>
