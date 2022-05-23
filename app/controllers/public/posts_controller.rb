@@ -14,8 +14,7 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to posts_path, notice: "投稿に成功しました"
     else
-      @posts = Post.all
-       render :index, alert: '未入力項目があります'
+      redirect_to new_post_path, alert: 'タイトル及び投稿内容を入力して下さい'
     end
   end
 
@@ -46,21 +45,20 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "更新に成功しました"
     else
-      render :edit, alert: '更新に失敗しました'
+      redirect_to edit_post_path(@post), alert: '更新に失敗しました'
     end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to request.referrer, notice: "削除に成功しました"
+    redirect_to posts_path, notice: "削除に成功しました"
   end
 
   def ensure_correct_user
     @post = Post.find_by(id: params[:id])
     if @post.customer_id != current_customer.id
-      flash[:notice] = "権限がありません"
-      redirect_to posts_path
+      redirect_to posts_path, alert: "権限がありません"
     end
   end
 
