@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path, notice: "投稿に成功しました"
     else
       @posts = Post.all
-       render :index
+       render :index, alert: '未入力項目があります'
     end
   end
 
@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new
-    @comments = @post.comments.page(params[:page]).per(7).reverse_order
+    @comments = @post.comments.page(params[:page]).per(10).reverse_order
     @post_tags = @post.tags
   end
 
@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "更新に成功しました"
     else
-      render :edit
+      render :edit, alert: '更新に失敗しました'
     end
   end
 

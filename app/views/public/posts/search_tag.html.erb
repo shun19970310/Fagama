@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        タグリスト一覧
+        「<%= @tag.name %>」の投稿一覧
       </h1>
     </div>
   </div>
@@ -18,7 +18,7 @@
         <% end %>
 
         <% @posts.each do |post| %>
-         <div class="card">
+         <div class="card mt-4">
           <div class="card-body">
             <h6 class="card-title">
               <%=link_to post_path(post.id) do %>

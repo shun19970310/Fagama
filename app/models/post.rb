@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  validates :title, presence: true
+  validates :body, presence: true
+
   def self.search(search)
     if search != ""
       Post.where('title LIKE(?)', "%#{search}%")

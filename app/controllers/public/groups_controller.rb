@@ -29,7 +29,7 @@ class Public::GroupsController < ApplicationController
     if @group.save
       redirect_to groups_path, notice: 'グループを作成しました。'
     else
-      render 'new'
+      render 'new', notice: 'グループの作成に失敗しました'
     end
   end
 
@@ -40,7 +40,7 @@ class Public::GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to groups_path, notice: 'グループを更新しました。'
     else
-      render "edit"
+      render "edit", alert: 'グループの更新に失敗しました'
     end
   end
 
