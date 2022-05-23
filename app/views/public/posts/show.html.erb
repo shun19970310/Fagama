@@ -12,22 +12,42 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <h4>投稿主:<%= @post.customer.name %></h4><br>
-        <h4>タイトル:<%= @post.title %></h4><br>
-        <h4>投稿内容</h4>
-        <% @post_tags.each do |tag| %>
-         <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
-         <%= "(#{tag.posts.count})" %>
-        <% end %>
-        <p id="text"><%= simple_format @post.body %></p>
-        <div id="favorite_btn_<%= @post.id %>">
-         <%= render 'public/likes/like', post: @post %>
+        <div class="card mt-2">
+          <div class="card-body text-center">
+            <h5 class="card-title"><strong><%= @post.title %></strong></h5>
+            <h6 class="card-body"><strong><%= simple_format @post.body %></strong></h6>
+            <% @post_tags.each do |tag| %>
+              <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+              <%= "(#{tag.posts.count})" %>
+            <% end %>
+            <div id="favorite_btn_<%= @post.id %>">
+              <%= render 'public/likes/like', post: @post %>
+            </div>
+              <% if @post.customer.id == current_customer.id %>
+                <%= link_to edit_post_path(@post.id), class: "panel-block" do %>
+                  <span class="panel-icon">
+                    <i class="fas fa-edit"></i>
+                  </span>
+                  この投稿を編集する
+                <% end %>
+                <%= link_to post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "panel-block" do %>
+                  <span class="panel-icon">
+                    <i class="fas fa-trash"></i>
+                  </span>
+                  この投稿を削除する
+                <% end %>
+              <% end %>
+              <%= link_to posts_path, class: "panel-block" do %>
+                <span class="panel-icon">
+                  <i class="fas fa-undo"></i>
+                </span>
+                投稿一覧に戻る
+              <% end %>
+              <div class="content">
+                <time><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></time>
+              </div>
+          </div>
         </div>
-        <% if @post.customer.id == current_customer.id %>
-         <%= link_to '編集', edit_post_path(@post.id), class: "btn btn-success mr-3 mt-2" %>
-         <%= link_to '削除', post_path(@post.id),method: :delete, "data-confirm"=>"本当に消しますか？", class: "btn btn-danger mt-2" %>
-        <% end %>
-        <span><%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark ml-3 mt-2" %></span>
       </div>
 
       <div class="comments ml-5 mt-3">
