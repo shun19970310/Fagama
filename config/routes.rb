@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
     get "search_tag"=>"posts#search_tag"
 
+    resources :contacts, only: [:new, :create]
+
   end
 
 end
