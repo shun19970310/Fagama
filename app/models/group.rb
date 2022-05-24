@@ -4,4 +4,7 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true, length: {maximum: 60}
+
+  attachment :group_image, destroy: false
+
 end

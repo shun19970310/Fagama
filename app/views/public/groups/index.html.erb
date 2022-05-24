@@ -12,8 +12,9 @@
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
+          <th></th>
           <th>グループ名</th>
-          <th>紹介文</th>
+          <th>グループ紹介</th>
           <th>メンバー数</th>
           <th>
             <%= link_to new_group_path, style:"font-size:40px; color:orange;" do %>
@@ -24,6 +25,11 @@
       <tbody>
         <% @groups.each do |group| %>
           <tr>
+            <td>
+              <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
+                <%= attachment_image_tag group, :group_image, fallback: "no_image.jpg", class: "image is-rounded" %>
+              </figure>
+            </td>
             <td><%= link_to group.name, group_path(group) %></td>
             <td><%= group.introduction %></td>
             <td><i class="fa fa-users"></i> <%= group.customers.count %></td>
