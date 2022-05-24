@@ -2,8 +2,11 @@ class Public::GroupsController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
 
+  def new
+    @group = Group.new
+  end
+
   def index
-    @post = Post.new
     @groups = Group.all
   end
 
@@ -16,10 +19,6 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:group_id])
     @group.customers << current_customer
     redirect_to  groups_path, notice: '参加に成功しました'
-  end
-
-  def new
-    @group = Group.new
   end
 
   def create
@@ -65,7 +64,7 @@ class Public::GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :introduction, :image)
+    params.require(:group).permit(:name, :introduction, :group_image)
   end
 
   def ensure_correct_customer
