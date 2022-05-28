@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        お気に入り一覧
+        お気に入り投稿
       </h1>
     </div>
   </div>
@@ -10,10 +10,8 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-6">
-　　　　<%= render partial: "public/posts/post", collection: @like_posts %>
-　　　</div>
-　　</div>
-　</div>
+    <div class="row">
+      <%= render "public/posts/post", likes: @like_posts %>
+    </div>
+  </div>
 </section>

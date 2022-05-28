@@ -12,24 +12,7 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
-        <%= form_with model: @post, local: true do |f| %>
-          <div class="field">
-            <%= f.label :title, "タイトル", class: "label" %>
-            <%= f.text_field :title, class: "input" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :body, "投稿内容", class: "label" %>
-            <%= f.text_area :body, class: "textarea" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :name, "タグ (,で区切ると複数タグ登録できます)", class: "label" %>
-            <%= f.text_field :name, value: @tag_list, class:"form-control"%>
-          </div>
-
-          <%= f.submit '更新', class: "button is-success" %>
-        <% end %>
+        <%= render "form", post: @post %>
       </div>
     </div>
   </div>
