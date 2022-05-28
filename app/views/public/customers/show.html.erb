@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        <%= @customer.name %>さんのマイページ
+        「<%= @customer.name %>」さんのマイページ
       </h1>
     </div>
   </div>
@@ -72,7 +72,7 @@
           <div class="card mt-2">
             <div class="card-body text-center">
               <h4 class="card-title"><strong><%=post.title %></strong></h4>
-            　<p class="card-body"><%=post.body %></p>
+              <p class="card-body"><%=post.body %></p>
               <%= link_to post_path(post), class: "panel-block" do %>
                 <span class="panel-icon">
                   <i class="fas fa-book" aria-hidden="true"></i>

@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
+  before_action :set_group, only: [:join, :new_mail, :send_mail]
 
   def new
     @group = Group.new
@@ -16,7 +17,6 @@ class Public::GroupsController < ApplicationController
   end
 
   def join
-    @group = Group.find(params[:group_id])
     @group.customers << current_customer
     redirect_to  groups_path, notice: '参加に成功しました'
   end
@@ -50,11 +50,9 @@ class Public::GroupsController < ApplicationController
   end
 
   def new_mail
-    @group = Group.find(params[:group_id])
   end
 
   def send_mail
-    @group = Group.find(params[:group_id])
     group_customers = @group.customers
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
@@ -65,6 +63,10 @@ class Public::GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image)
+  end
+
+  def set_group
+    @group = Group.find(params[:group_id])
   end
 
   def ensure_correct_customer

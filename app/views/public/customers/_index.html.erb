@@ -1,0 +1,39 @@
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>プロフィール</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td>
+          <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
+            <%= attachment_image_tag customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+          </figure>
+        </td>
+        <td>
+          <%= link_to customer_path(customer) do %>
+            <%= customer.name %>
+          <% end %>
+        </td>
+        <td><%= simple_format customer.introduction %></td>
+        <td>
+          <% if customer != current_customer %>
+            <% if customer.is_followed_by?(current_customer) %>
+              <%=link_to customer_relationships_path(customer), method: :delete do %>
+                <button type="button" class="btn btn btn-danger">フォロー解除</button>
+              <% end %>
+            <% else %>
+              <%=link_to customer_relationships_path(customer), method: :post do %>
+                <button type="button" class="btn btn btn-primary">フォロー</button>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,14 +1,14 @@
-<table class = "table" >
-  <thead>
-    <tr>
-      <th>投稿主</th>
-      <th>タイトル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= link_to post.customer.name, customer_path(post.customer.id) %></td>
-      <td><%= link_to post.title, post_path(post.id) %></td>
-    </tr>
-  </tbody>
-</table>
+  <% likes.each do |like| %>
+    <div class="col-md-4">
+      <div class="card mt-2 rounded-circle">
+        <div class="card-body text-center">
+          <h4 class="card-title">
+            「<%= link_to like.title, post_path(like.id) %>」
+          </h4>
+          <p class="card-name">
+            by  <%= link_to like.customer.name, customer_path(like.customer.id) %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
