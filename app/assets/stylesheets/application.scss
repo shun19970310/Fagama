@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "bulma";
+
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
@@ -29,13 +30,12 @@
 	background-size: contain;
 }
 
+
 footer{
-	 position: absolute;
-  margin-top: auto;
-  left: 0;
+	 position: sticky;
+  top: 100vh;
   width: 100%;
   background-color: #174a5c;
   color: white;
   text-align: center;
 }
-
