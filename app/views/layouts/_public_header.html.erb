@@ -11,27 +11,27 @@
         </div>
         <ul class="navbar-nav ml-auto">
             <li class = "nav-item mr-3">
-              <%= link_to customer_path(current_customer), class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to customer_path(current_customer), class:"btn btn-sm btn-info" do %>
                 <i class="fas fa-user"></i> <strong>マイページ</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to posts_path, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to posts_path, class:"btn btn-sm btn-success" do %>
                 <i class="fas fa-comment-alt"></i> <strong>ゲーム投稿</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to groups_path, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to groups_path, class:"btn btn-sm btn-warning" do %>
                 <i class="fas fa-users"></i> <strong>グループ</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to new_contact_path(customer_id: current_customer.id ), class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to new_contact_path(customer_id: current_customer.id ), class:"btn btn-sm btn-light" do %>
                 <i class="fas fa-envelope"></i> <strong>お問い合わせ</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to destroy_customer_session_path, method: :delete , class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to destroy_customer_session_path, method: :delete , class:"btn btn-sm btn-danger" do %>
                 <i class="fas fa-sign-out-alt"></i> <strong>ログアウト</strong>
               <% end %>
             </li>

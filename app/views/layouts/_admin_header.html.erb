@@ -9,17 +9,17 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class = "nav-item mr-3">
-              <%= link_to admin_customers_path, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to admin_customers_path, class:"btn btn-sm btn-success" do %>
                 <i class="fas fa-users"></i> <strong>会員一覧</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to admin_comments_path, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to admin_comments_path, class:"btn btn-sm btn-primary" do %>
                 <i class="fas fa-comments"></i> <strong>コメント一覧</strong>
               <% end %>
             </li>
             <li class = "nav-item mr-3">
-              <%= link_to destroy_admin_session_path, method: :delete, class:"btn btn-sm btn-outline-secondary" do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class:"btn btn-sm btn-danger" do %>
                 <i class="fas fa-sign-out-alt"></i> <strong>ログアウト</strong>
               <% end %>
             </li>

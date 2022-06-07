@@ -20,7 +20,7 @@
 
       <div class = "mt-3">
         <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-         <%= f.text_field :keyword, placeholder: "キーワード検索する" %>
+         <%= f.text_field :keyword, placeholder: "キーワードで検索" %>
          <%= f.submit "検索" %>
         <% end %>
       </div>
@@ -29,7 +29,7 @@
         <thead>
           <tr>
             <th></th>
-            <th>投稿主</th>
+            <th>ユーザー</th>
             <th>タイトル</th>
             <th>内容</th>
             <th>投稿日時</th>
