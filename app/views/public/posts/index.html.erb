@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        投稿一覧
+        ゲーム投稿リスト
       </h1>
     </div>
   </div>
@@ -28,6 +28,7 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
+            <th></th>
             <th>投稿主</th>
             <th>タイトル</th>
             <th>内容</th>
@@ -43,6 +44,11 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr>
+              <td>
+                <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
+                  <%= attachment_image_tag post.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+                </figure>
+              </td>
               <td>
                 <%= link_to customer_path(post.customer.id) do %>
                   <%= post.customer.name%>
