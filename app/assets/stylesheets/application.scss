@@ -31,11 +31,25 @@
 }
 
 
-footer{
-	 position: sticky;
-  top: 100vh;
-  width: 100%;
-  background-color: #174a5c;
-  color: white;
-  text-align: center;
+#footerwrap {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: #384452;
+}
+
+#footerwrap p {
+	color: #bfc9d3;
+}
+
+#footerwrap h4 {
+	color: white;
+}
+
+#footerwrap i:hover {
+	color: #00b3fe
+}
+
+.hline-w {
+	border-bottom: 2px solid #ffffff;
+	margin-bottom: 25px;
 }
