@@ -1,4 +1,4 @@
-<section class="hero is-success">
+<section class="hero is-warning">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
@@ -31,11 +31,7 @@
                   <%= post.customer.name%>
                 <% end %>
               </td>
-              <td>
-                <%= link_to admin_post_path(post.id) do %>
-                  <%= post.title %>
-                <% end %>
-              </td>
+              <td><%= post.title %></td>
               <td><%= simple_format post.body %></td>
               <td>
                 <div class ="time"><%= l post.created_at %></div>
