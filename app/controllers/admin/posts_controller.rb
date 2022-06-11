@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @posts = Post.all.includes(:customer).order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.all.includes(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show
