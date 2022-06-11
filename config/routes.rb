@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :comments, only: [:index, :destroy]
+    resources :posts, only: [:index, :show, :destroy]
   end
 
   scope module: :public do
