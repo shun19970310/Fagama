@@ -26,8 +26,14 @@
              <tr>
               <td><%= customer.id %></td>
               <td>
-                <%= link_to admin_customer_path(customer.id) do %>
-                  <%= customer.name %>
+                <% if customer.is_deleted == false %>
+                  <%= link_to admin_customer_path(customer.id) do %>
+                    <%= customer.name %>
+                  <% end %>
+                <% else %>
+                  <%= link_to admin_customer_path(customer.id) do %>
+                    <%= customer.name %>（退会済みユーザー）
+                  <% end %>
                 <% end %>
               </td>
               <td><%= customer.email %></td>
