@@ -14,6 +14,11 @@
               <% end %>
             </li>
             <li class = "nav-item mr-3">
+              <%= link_to admin_posts_path, class:"btn btn-sm btn-warning" do %>
+                <i class="fas fa-comment-alt"></i> <strong>投稿一覧</strong>
+              <% end %>
+            </li>
+            <li class = "nav-item mr-3">
               <%= link_to admin_comments_path, class:"btn btn-sm btn-primary" do %>
                 <i class="fas fa-comments"></i> <strong>コメント一覧</strong>
               <% end %>
