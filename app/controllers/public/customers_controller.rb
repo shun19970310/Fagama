@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:guest_sign_in]
 
   def show
-    @posts = @customer.posts.page(params[:page])
+    @posts = @customer.posts.page(params[:page]).per(10)
   end
 
   def edit
