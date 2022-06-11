@@ -16,7 +16,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :name, class: "label" %>
+          <%= f.label :ユーザーネーム, class: "label" %>
           <p class="control has-icons-left">
             <%= f.text_field :name, autofocus: true, autocomplete: "email", :placeholder => "ニックネーム", class: "input" %>
             <span class="icon is-small is-left">
@@ -26,7 +26,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :email, class: "label" %>
+          <%= f.label :メールアドレス, class: "label" %>
           <p class="control has-icons-left">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "input" %>
             <span class="icon is-small is-left">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password, class: "label" %>
+          <%= f.label :パスワード, class: "label" %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %>文字以上)</em>
           <% end %><br />
@@ -49,7 +49,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :password_confirmation, class: "label" %>
+          <%= f.label :確認用パスワード, class: "label" %>
           <p class="control has-icons-left">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "確認用パスワード", class: "input" %>
             <span class="icon is-small is-left">
