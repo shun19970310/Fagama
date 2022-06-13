@@ -34,6 +34,12 @@
             <th>内容</th>
             <th>投稿日時</th>
             <th>
+              <%= link_to '新着', search_posts_path(new: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?new=true')}"} %>
+              <%= link_to '古い', search_posts_path(old: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?old=true')}"} %>
+              <%= link_to 'いいね', search_posts_path(like_count: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?like_count=true')}"} %>
+              <%= link_to 'コメント', search_posts_path(comment_count: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?comment_count=true')}"} %>
+            </th>
+            <th>
               <%= link_to new_post_path, style:"font-size:40px; color:orange;" do %>
                 <i class="fas fa-plus-circle"></i>
               <% end %>
@@ -41,38 +47,8 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td>
-                <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
-                  <%= attachment_image_tag post.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
-                </figure>
-              </td>
-              <td>
-                <%= link_to customer_path(post.customer.id) do %>
-                  <%= post.customer.name%>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to post_path(post.id) do %>
-                  <%= post.title %>
-                <% end %>
-              </td>
-              <td><%= simple_format post.body %></td>
-              <td>
-                <div class ="time"><%= l post.created_at %></div>
-              </td>
-              <td>
-                <i class="fa fa-comment"></i>
-                <span><%= "#{post.comments.count} " %></span>
-              </td>
-              <td>
-                <i class="fa fa-thumbs-up"></i>
-                <span><%= "#{post.likes.count}" %></span>
-              </td>
-            </tr>
-          <% end %>
+        <tbody id="post">
+          <%= render 'public/posts/new', posts: @posts %>
         </tbody>
       </table>
     </div>

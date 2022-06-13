@@ -19,14 +19,25 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.includes(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
-    # @posts = Post.left_joins(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
+    if params[:new]
+      @posts = Post.latest.includes(:customer).where(customer: {is_deleted: false}).page(params[:page]).per(10)
+    elsif params[:old]
+      @posts = Post.old.includes(:customer).where(customer: {is_deleted: false}).page(params[:page]).per(10)
+    elsif params[:like_count]
+      @posts = Post.like_count.includes(:customer).where(customer: {is_deleted: false}).page(params[:page]).per(10)
+    elsif params[:comment_count]
+      @posts = Post.comment_count.includes(:customer).where(customer: {is_deleted: false}).page(params[:page]).per(10)
+    else
+      @posts = Post.all.includes(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
+      # @posts = Post.left_joins(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
+    end
     @tag_list=Tag.all
   end
 
   def show
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new
+    @commets_count_all = @post.comments.count
     @comments = @post.comments.page(params[:page]).per(10).reverse_order
     @post_tags = @post.tags
   end

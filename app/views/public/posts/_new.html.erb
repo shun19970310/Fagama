@@ -1,0 +1,31 @@
+<% posts.each do |post| %>
+  <tr>
+    <td>
+      <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
+        <%= attachment_image_tag post.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+      </figure>
+    </td>
+    <td>
+      <%= link_to customer_path(post.customer.id) do %>
+        <%= post.customer.name%>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to post_path(post.id) do %>
+        <%= post.title %>
+      <% end %>
+    </td>
+    <td><%= simple_format post.body %></td>
+    <td>
+      <div class ="time"><%= l post.created_at %></div>
+    </td>
+    <td>
+      <i class="fa fa-comment"></i>
+      <span><%= "#{post.comments.count} " %></span>
+    </td>
+    <td>
+      <i class="fa fa-thumbs-up"></i>
+      <span><%= "#{post.likes.count}" %></span>
+    </td>
+  </tr>
+<% end %>

@@ -51,6 +51,11 @@ Rails.application.routes.draw do
 
     get "search_tag"=>"posts#search_tag"
 
+    get 'posts/search/sort_new', to: 'posts#search', as: 'sort_new'
+    get 'posts/search/sort_old', to: 'posts#search', as: 'sort_old'
+    get 'posts/search/sort_like', to: 'posts#search', as: 'sort_like'
+    get 'posts/search/sort_comment', to: 'posts#search', as: 'sort_comment'
+
     resources :contacts, only: [:new, :create]
 
   end

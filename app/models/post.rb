@@ -32,4 +32,9 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+  scope :latest, -> {order(updated_at: :desc)}
+  scope :old, -> {order(updated_at: :asc)}
+  scope :like_count, -> {order(like: :desc)}
+  scope :comment_count, -> {order(comment: :desc)}
 end
