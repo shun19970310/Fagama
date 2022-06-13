@@ -44,7 +44,7 @@ class Public::CustomersController < ApplicationController
 
   def followers
     customer = Customer.find(params[:id])
-    @customers = customer.followers
+    @customers = customer.alive_followers
   end
 
   private

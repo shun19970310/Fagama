@@ -62,6 +62,7 @@ gem 'rails-i18n'
 gem 'kaminari','~> 1.2.1'
 gem "bulma-rails", "~> 0.9.3"
 gem 'pry-rails'
+gem 'jquery-rails'
 # 環境変数化のためのgem
 gem 'dotenv-rails'
 group :production do

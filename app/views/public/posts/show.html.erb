@@ -51,26 +51,14 @@
       </div>
 
       <div class="comments ml-5 mt-3">
-        <%= form_with(model:[@post, @comment], local: true) do |f| %>
-        <%= f.text_area :comment, :size=>"60x3",placeholder: "コメントを入力して下さい" %>
-        <%= f.submit "送信する", class: "btn btn-success mt-2" %>
-        <% end %>
+        <div class="new-comment">
+          <%= render 'public/posts/comment_form', post: @post, comment: @comment %>
+        </div>
 
-        <p class = "mt-2">コメント：<%= @comments.count %>件</p>
-        <% @comments.each do |comment| %>
-	        <div class="comments-index mb-2">
-            <%= comment.customer.name %>
-            <%= l comment.created_at %><br>
-           <div class="d-flex">
-             <%= comment.comment %>
-             <% if comment.customer == current_customer %>
-              <div class="comment-delete">
-               <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete,  "data-confirm" => "削除しますか？",class: "btn-sm btn-danger ml-3" %>
-              </div>
-             <% end %>
-           </div>
-          </div>
-        <% end %>
+        <p class = "mt-2">コメント：<%= @commets_count_all %>件</p>
+        <div id="comments_area">
+          <%= render 'public/posts/post_comment', comments: @comments %>
+        </div>
         <%= paginate @comments %>
       </div>
     </div>

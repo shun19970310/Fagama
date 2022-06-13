@@ -20,6 +20,11 @@ class Customer < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :following
 
+
+  def alive_followers
+    followers.where(is_deleted: false)
+  end
+
   def is_followed_by?(customer)
     reverse_of_relationships.find_by(following_id: customer.id).present?
   end
