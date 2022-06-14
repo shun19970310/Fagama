@@ -1,0 +1,49 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        チャットルーム
+      </h1>
+    </div>
+  </div>
+</section>
+
+<h4 class="rooms-title">気になる同士</h4>
+<% @entries.each do |e| %>
+  <div class="user-name">
+  <strong>
+    <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+      <%= attachment_image_tag e.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+      <a class="rooms-user-link" href="/customers/<%= e.customer.id %>">
+        <%= e.customer.name %>さん
+      </a>
+    </figure>
+  </strong>
+  </div>
+<% end %>
+
+<div class="chats">
+  <div class="chat">
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+        <div class="chat-box">
+          <div class="chat-face">
+            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+              <%= attachment_image_tag @customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+            </figure>
+          </div>
+          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
+            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="posts">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "投稿",class: 'form-submit'%>
+    <% end %>
+  </div>
+</div>

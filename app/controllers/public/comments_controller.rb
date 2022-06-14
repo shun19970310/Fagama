@@ -6,7 +6,9 @@ class Public::CommentsController < ApplicationController
     comment = current_customer.comments.new(comment_params)
     comment.post_id = post.id
     if comment.save
-      @comments = post.comments.page(params[:page]).per(10).reverse_order
+      comments = post.comments
+      @comments = comments.page(params[:page]).per(10).reverse_order
+      @comments_count_all = comments.count
       flash.now[:notice] = 'コメントを投稿しました'
       render "public/posts/post_comment"
     else
@@ -18,6 +20,8 @@ class Public::CommentsController < ApplicationController
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     flash.now[:alert] = '投稿を削除しました'
     @post = Post.find(params[:post_id])
+    @comments = @post.comments
+    @comments_count_all = @comments.count
     render "public/posts/post_comment"
   end
 

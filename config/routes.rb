@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :public do
+    get 'rooms/show'
+  end
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -58,6 +61,9 @@ Rails.application.routes.draw do
 
     resources :contacts, only: [:new, :create]
 
+    resources :messages, only: [:create]
+
+    resources :rooms, only: [:create,:show]
   end
 
   get  'index' =>'contacts#index'
