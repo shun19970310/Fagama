@@ -12,7 +12,7 @@
   <div class="container">
    <div class="row mt-5">
     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-      <%= form_with(model: @message, :url => done_path) do |f| %>
+      <%= form_with(model: @contact, :url => done_path) do |f| %>
         <div class="form-group mt-3">
           名前<span class="text-danger">（必須）</span>
           <%= f.hidden_field :name %>
