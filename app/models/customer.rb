@@ -25,6 +25,10 @@ class Customer < ApplicationRecord
     followers.where(is_deleted: false)
   end
 
+  def alive_followings
+    followings.where(is_deleted: false)
+  end
+
   def is_followed_by?(customer)
     reverse_of_relationships.find_by(following_id: customer.id).present?
   end

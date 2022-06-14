@@ -1,4 +1,6 @@
-<% comments.each do |comment| %>
+<% if comments.present? %>
+ <p class = "mt-2">コメント：<%= count %>件</p>
+ <% comments.each do |comment| %>
 	<div class="comments-index mb-2">
     <%= comment.customer.name %>
     <%= l comment.created_at %><br>
@@ -11,4 +13,7 @@
       <% end %>
     </div>
   </div>
+ <% end %>
+<% else %>
+  <p>コメントはまだありません</p>
 <% end %>
