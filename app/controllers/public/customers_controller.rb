@@ -3,10 +3,27 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:guest_sign_in]
 
   def show
-    @posts = @customer.posts.page(params[:page]).per(10)
+    @posts = @customer.posts.page(params[:page]).per(9)
     # 退会済みユーザーを除くフォロー/フォロワーリスト
     @followings_count_all = @customer.alive_followings.count
     @followers_count_all = @customer.alive_followers.count
+    @currentCustomerEntry = Entry.where(customer_id: current_customer.id)
+    @customerEntry = Entry.where(customer_id: @customer.id)
+    if @customer.id == current_customer.id
+      @currentCustomerEntry.each do |cu|
+        @customerEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit

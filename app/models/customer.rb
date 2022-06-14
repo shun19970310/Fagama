@@ -20,6 +20,8 @@ class Customer < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: :follower_id, dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :following
 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   def alive_followers
     followers.where(is_deleted: false)
