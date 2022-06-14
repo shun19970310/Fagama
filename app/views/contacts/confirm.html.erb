@@ -1,0 +1,46 @@
+<section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        内容確認画面
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+   <div class="row mt-5">
+    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+      <%= form_with(model: @message, :url => done_path) do |f| %>
+        <div class="form-group mt-3">
+          名前<span class="text-danger">（必須）</span>
+          <%= f.hidden_field :name %>
+          <%= simple_format(@contact.name) %>
+        </div>
+
+        <div class="form-group mt-3">
+          メールアドレス<span class="text-danger">（必須）</span>
+          <%= f.hidden_field :email %>
+          <%= simple_format(@contact.email) %>
+        </div>
+
+        <div class="form-group my-4">
+          お問い合わせ内容<span class="text-danger">（必須）</span>
+          <%= f.hidden_field :content %>
+          <%= simple_format(@contact.content) %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit "送信", class: "btn btn-warning" %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= link_to "戻る", name: "back", class: "btn btn-warning mt-2" %>
+        </div>
+
+      <% end %>
+    </div>
+   <div class="offset-lg-3 offset-md-2">
+  </div>
+</section>

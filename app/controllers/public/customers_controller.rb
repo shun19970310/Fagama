@@ -4,6 +4,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @posts = @customer.posts.page(params[:page]).per(10)
+    # 退会済みユーザーを除くフォロー/フォロワーリスト
+    @followings_count_all = @customer.alive_followings.count
+    @followers_count_all = @customer.alive_followers.count
   end
 
   def edit
@@ -29,7 +32,7 @@ class Public::CustomersController < ApplicationController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    redirect_to root_path, notice: "ゲストログインしました"
+    redirect_to posts_path, notice: "ゲストログインしました"
   end
 
   def likes
@@ -39,7 +42,7 @@ class Public::CustomersController < ApplicationController
 
   def followings
     customer = Customer.find(params[:id])
-    @customers = customer.followings
+    @customers = customer.alive_followings
   end
 
   def followers

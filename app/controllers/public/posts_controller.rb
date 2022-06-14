@@ -37,7 +37,8 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @comment = Comment.new
-    @commets_count_all = @post.comments.count
+    # コメント総数を定義
+    @comments_count_all = @post.comments.count
     @comments = @post.comments.page(params[:page]).per(10).reverse_order
     @post_tags = @post.tags
   end

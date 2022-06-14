@@ -55,9 +55,8 @@
           <%= render 'public/posts/comment_form', post: @post, comment: @comment %>
         </div>
 
-        <p class = "mt-2">コメント：<%= @commets_count_all %>件</p>
         <div id="comments_area">
-          <%= render 'public/posts/post_comment', comments: @comments %>
+          <%= render 'public/posts/post_comment', count: @comments_count_all, comments: @comments %>
         </div>
         <%= paginate @comments %>
       </div>

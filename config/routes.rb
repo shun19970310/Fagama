@@ -60,4 +60,8 @@ Rails.application.routes.draw do
 
   end
 
+  get  'index' =>'contacts#index'
+  post 'confirm' => 'contacts#confirm'
+  post 'done' => 'contacts#done'
+
 end
