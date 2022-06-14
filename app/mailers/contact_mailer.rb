@@ -6,8 +6,10 @@ class ContactMailer < ApplicationMailer
     mail bcc: group_customers.pluck(:email), subject: mail_title
   end
 
-  def contact_mail(contact, customer)
+
+  def contact_mail(contact)
     @contact = contact
-    mail to: customer.email, bcc: ENV["KEY"], subject: "お問い合わせについて【自動送信】"
+    mail(:to => ENV['KEY'], :subject => 'お問い合わせを承りました')
   end
+
 end
