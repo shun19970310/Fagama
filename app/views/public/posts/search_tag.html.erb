@@ -16,27 +16,34 @@
           <%=link_to list.name, search_tag_path(tag_id: list.id) %>
           <%= "(#{list.posts.count})" %>
         <% end %>
-
-        <% @posts.each do |post| %>
-         <div class="card mt-4">
-          <div class="card-body">
-            <h6 class="card-title">
-              <%=link_to post_path(post.id) do %>
-                <%= post.title.truncate(25) %>
-              <% end %>
-            </h6>
-            <div id= "<%=post.id %>" >
-             <%= render 'public/likes/like', post: post %>
-            </div>
-          </div>
-         </div>
-        <% end %>
-
-
-        <div class = "pagination pagination-sm justify-content-center" >
-          <%= paginate @posts %>
-        </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-md-4">
+            <div class="card mt-2 rounded-circle">
+              <div class="card-body text-center">
+                <h4 class="card-title">
+                  <%=link_to post_path(post.id) do %>
+                    <%= post.title.truncate(25) %>
+                  <% end %>
+                </h4>
+                </h6>
+                <div id= "<%=post.id %>" >
+                  <%= render 'public/likes/like', post: post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</section>
+<div class = "pagination pagination justify-content-center mb-5" >
+  <%= paginate @posts %>
+</div>

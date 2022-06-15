@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        「<%= @group.name %>」グループの詳細
+        「<%= @group.name %>」グループ詳細
       </h1>
     </div>
   </div>
@@ -59,6 +59,14 @@
             </span>
             メンバーにメール
            <% end %>
+          </div>
+          <div>
+            <%= link_to groups_path, class: "panel-block" do %>
+              <span class="panel-icon">
+                <i class="fas fa-users"></i>
+              </span>
+              グループリストに戻る
+            <% end %>
           </div>
         </div>
       </div>
