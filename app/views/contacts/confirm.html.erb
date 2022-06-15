@@ -36,7 +36,9 @@
         </div>
 
         <div class="form-group text-center">
-          <%= link_to "戻る", name: "back", class: "btn btn-warning mt-2" %>
+          <%= link_to index_path, name: "back", class: "btn btn-warning mt-2 mb-5" do  %>
+            前ページに戻る
+          <% end %>
         </div>
 
       <% end %>

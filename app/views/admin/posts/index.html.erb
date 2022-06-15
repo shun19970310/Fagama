@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container has-text-centered">
       <h1 class="title">
-        会員投稿リスト
+        会員投稿一覧
       </h1>
     </div>
   </div>
@@ -43,9 +43,7 @@
       </table>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= paginate @posts %>
-    </div>
-  </div>
+</div>
+<div class = "pagination pagination justify-content-center mb-5" >
+  <%= paginate @posts %>
 </div>

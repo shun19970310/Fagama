@@ -20,7 +20,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all.includes(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
-      # @posts = Post.left_joins(:customer).where(customer: {is_deleted: false}).order(created_at: :desc).page(params[:page]).per(10)
     @tag_list=Tag.all
   end
 
@@ -72,7 +71,7 @@ class Public::PostsController < ApplicationController
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.page(params[:page]).per(10)
+    @posts = @tag.posts.page(params[:page]).per(9)
   end
 
   private
