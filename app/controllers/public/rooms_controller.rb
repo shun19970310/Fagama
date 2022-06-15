@@ -9,6 +9,7 @@ class Public::RoomsController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
     @room = Room.find(params[:id])
     if Entry.where(customer_id: current_customer.id,room_id: @room.id).present?
       @messages = @room.messages
@@ -18,4 +19,5 @@ class Public::RoomsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+
 end

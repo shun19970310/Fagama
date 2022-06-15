@@ -34,12 +34,6 @@
             <th>内容</th>
             <th>投稿日時</th>
             <th>
-              <%= link_to '新着', search_posts_path(new: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?new=true')}"} %>
-              <%= link_to '古い', search_posts_path(old: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?old=true')}"} %>
-              <%= link_to 'いいね', search_posts_path(like_count: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?like_count=true')}"} %>
-              <%= link_to 'コメント', search_posts_path(comment_count: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?comment_count=true')}"} %>
-            </th>
-            <th>
               <%= link_to new_post_path, style:"font-size:40px; color:orange;" do %>
                 <i class="fas fa-plus-circle"></i>
               <% end %>

@@ -15,6 +15,13 @@
  */
 @import "bulma";
 
+body {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
