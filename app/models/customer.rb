@@ -46,9 +46,19 @@ class Customer < ApplicationRecord
     end
   end
 
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  with_options presence: true do
+    validates :name
+    validates :email
+  end
 
-  validates :email, presence: true
+  with_options uniqueness: true do
+    validates :name
+    validates :email
+  end
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
+  validates :name, length: { minimum: 2, maximum: 20 }
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
   attachment :image, destroy: false
 
