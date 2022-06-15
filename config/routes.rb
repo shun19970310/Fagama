@@ -61,9 +61,9 @@ Rails.application.routes.draw do
 
     resources :contacts, only: [:new, :create]
 
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :destroy]
 
-    resources :rooms, only: [:create,:show]
+    resources :rooms, only: [:index, :create,:show]
   end
 
   get  'index' =>'contacts#index'

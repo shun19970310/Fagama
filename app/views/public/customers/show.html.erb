@@ -34,33 +34,35 @@
                  <td>
                   <%= link_to "編集", edit_customer_path(@customer), class: "btn btn-success ml-3" %>
                   <%= link_to "マイリスト", likes_customer_path(@customer), class: "btn btn-danger ml-3" %>
-                  <!--チャットのコード-->
-                  <% if (current_customer.is_followed_by?(@customer)) && (@customer.is_followed_by?(current_customer))  %>
-                    <% if @isRoom == true %>
-                      <p class="customer-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-                    <% else %>
-                      <%= form_for @room do |f| %>
-                        <%= fields_for @entry do |e| %>
-                          <%= e.hidden_field :customer_id, value: @customer.id %>
-                        <% end %>
-                        <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg customer-show-chat"%>
-                      <% end %>
-                    <% end %>
-                  <% end %>
                  </td>
                 <% else %>
                  <td>
                   <% if @customer.is_followed_by?(current_customer) %>
                     <%=link_to customer_relationships_path(@customer), method: :delete do %>
-                     <button type="button" class="btn btn btn-danger">フォロー解除</button>
+                     <button type="button" class="btn btn-danger">フォロー解除</button>
                     <% end %>
                   <% else %>
                     <%=link_to customer_relationships_path(@customer), method: :post do %>
-                     <button type="button" class="btn btn btn-primary">フォロー</button>
+                     <button type="button" class="btn btn-primary">フォロー</button>
                     <% end %>
                   <% end %>
                  </td>
                 <% end %>
+                 <td>
+                  <!--チャットのコード-->
+                  <% unless @customer.id == current_customer.id %>
+                      <% if @isRoom == true %>
+                        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">チャットルームへ</a>
+                      <% else %>
+                        <%= form_for @room do |f| %>
+                          <%= fields_for @entry do |e| %>
+                            <%= e.hidden_field :customer_id, value: @customer.id %>
+                          <% end %>
+                          <%= f.submit "チャットを始める", class:"btn btn-primary"%>
+                        <% end %>
+                      <% end %>
+                  <% end %>
+                 </td>
               </tr>
             </table>
             <table class="table is-fullwidth">

@@ -1,15 +1,15 @@
 class Public::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :unsubscribe, :likes, :withdraw]
-  before_action :authenticate_customer!, except: [:guest_sign_in]
+ before_action :authenticate_customer!, except: [:guest_sign_in]
 
   def show
     @posts = @customer.posts.page(params[:page]).per(9)
     # 退会済みユーザーを除くフォロー/フォロワーリスト
     @followings_count_all = @customer.alive_followings.count
     @followers_count_all = @customer.alive_followers.count
-    @currentCustomerEntry = Entry.where(customer_id: current_customer.id)
-    @customerEntry = Entry.where(customer_id: @customer.id)
-    if @customer.id == current_customer.id
+   @currentCustomerEntry = Entry.where(customer_id: current_customer.id)
+    @customerEntry=Entry.where(customer_id: @customer.id)
+    unless @customer.id == current_customer.id
       @currentCustomerEntry.each do |cu|
         @customerEntry.each do |u|
           if cu.room_id == u.room_id then
@@ -18,8 +18,7 @@ class Public::CustomersController < ApplicationController
           end
         end
       end
-      if @isRoom
-      else
+      unless @isRoom
         @room = Room.new
         @entry = Entry.new
       end

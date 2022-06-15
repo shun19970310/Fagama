@@ -8,42 +8,41 @@
   </div>
 </section>
 
-<h4 class="rooms-title">気になる同士</h4>
-<% @entries.each do |e| %>
-  <div class="user-name">
-  <strong>
-    <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
-      <%= attachment_image_tag e.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
-      <a class="rooms-user-link" href="/customers/<%= e.customer.id %>">
-        <%= e.customer.name %>さん
-      </a>
-    </figure>
-  </strong>
-  </div>
-<% end %>
 
-<div class="chats">
+<div class="dmMain">
+ <div class="chats">
   <div class="chat">
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <div class="chat-box">
           <div class="chat-face">
-            <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
-              <%= attachment_image_tag @customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
+            <figure class="image is-48x48"  style="margin-left: auto; margin-right: auto;">
+              <%= attachment_image_tag m.customer, :image, fallback: "no_image.jpg", class: "image is-rounded" %>
             </figure>
+            <a class="rooms-user-link" href="/customers/<%= m.customer.id %>">
+              <%= m.customer.name %>さん
+            </a>
           </div>
-          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
-            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+          <div class="balloon-top">
+            <strong><%= m.content %></strong>
           </div>
+          <span><%= m.created_at.strftime("%Y-%m-%d %H:%M")%></span>
         </div>
       <% end %>
     <% end %>
-  </div>
-  <div class="posts">
+   </div>
+   <div class="posts mt-2">
     <%= form_for @message do |f| %>
-      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+      <%= f.text_field :content, placeholder: "50文字以内でメッセージを入力して下さい" , size: 50, class:"form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit "投稿",class: 'form-submit'%>
+          <%= f.submit "送信",class: 'form-submit'%>
     <% end %>
+   </div>
+  </div>
+  <div class="left-button mt-2">
+    <%= link_to "会員詳細ページへ", customer_path(current_customer), class:"edit-link" %>
   </div>
 </div>
+
+
+
