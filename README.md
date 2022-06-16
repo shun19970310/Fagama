@@ -1,5 +1,7 @@
 # Fagama
 
+## サイト概要
+
 ### サイトテーマ
 ゲームを通じてユーザー間での気軽な交流、新しい発見を実現できるコミュニティサイト
 
@@ -20,7 +22,9 @@
 * これまで知らなかった様な新たなゲーム/ジャンルを見つけたい時
 
 ## 設計書
+### ER図 : https://drive.google.com/file/d/1FpZMmJXC_bFMqdMge2aZnBR5qxx25X7K/view?usp=sharing
 
+### テーブル定義書及び使用Gem : https://docs.google.com/spreadsheets/d/1aDU4t1TBlbY-2akk8OXuGluM7EJnnPUDKTBBVxhNItA/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -30,5 +34,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 画像に関しては現状ユーザープロフィール画像（アバター）のみと考えており、ゲーム画面のキャプチャー、キャラクターのイラストは一切使用しない。
-- 可能であれば各コミュニティを分かりやすく識別するための画像を挿入したいが、著作権等で実現できない場合は使用しない。
+- GIRLY DROP https://girlydrop.com/
+- パブリックドメインQ https://publicdomainq.net/
