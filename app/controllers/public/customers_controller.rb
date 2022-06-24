@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :unsubscribe, :likes, :withdraw]
- before_action :authenticate_customer!, except: [:guest_sign_in]
+  before_action :authenticate_customer!, except: [:guest_sign_in]
 
   def show
     @posts = @customer.posts.page(params[:page]).per(9)
@@ -26,6 +26,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
+    if @customer != current_customer
+      redirect_to customer_path(current_customer), alert: "不正なアクセスです。"
+    end
   end
 
   def update
