@@ -1,11 +1,11 @@
 <%= form_with model: post, local: true do |f| %>
   <div class="field">
-    <%= f.label :title, "タイトル", class: "label" %>
+    <%= f.label :title, class: "label" %>
     <%= f.text_field :title, class: "input" %>
   </div>
 
   <div class="field">
-    <%= f.label :body, "投稿内容", class: "label" %>
+    <%= f.label :body, class: "label" %>
     <%= f.text_area :body, class: "textarea" %>
   </div>
 
