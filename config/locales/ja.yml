@@ -2,37 +2,10 @@ ja:
   activerecord:
     models:
       post: "投稿"
-      customer: "会員"
-      admin: "管理者"
-      contact: "問い合わせ"
-      comment: "コメント"
-      group: "グループ"
-      message: "メッセージ"
     attributes:
       post:
         title: "タイトル"
         body: "投稿内容"
-      customer:
-        email: "メールアドレス"
-        name:　"名前"
-        introduction:　"自己紹介文"
-        password: "パスワード"
-        password_confirmation: "パスワード（確認用）"
-        image_id: "プロフィール画像"
-      admin:
-        email: "メールアドレス"
-        password: "パスワード"
-      contact:
-        name: "名前"
-        email: "メールアドレス"
-        content: "問い合わせ内容"
-      comment:
-        comment: "コメント"
-      group:
-        name: "グループ名"
-        introduction: "紹介文"
-      message:
-        content: "メッセージ"
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
@@ -44,5 +17,5 @@ ja:
       next: "次 &rsaquo;"
       truncate: "..."
   attributes:
-    created_at: "作成日"
-    updated_at: "更新日"
+    created_at: 作成日
+    updated_at: 更新日
